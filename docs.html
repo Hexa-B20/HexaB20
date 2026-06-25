@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEXA-B20 // Protocol Documentation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F4EFE6;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F4EFE6; }
+        ::-webkit-scrollbar-thumb { background: #E6DFD3; border-radius: 3px; }
+    </style>
+</head>
+<body class="text-[#1A1A1A] antialiased">
+
+    <!-- TOP HEADER BAR -->
+    <header class="border-b border-[#E6DFD3] bg-[#F4EFE6]/90 backdrop-blur-md fixed top-0 w-full z-50 h-16 flex items-center justify-between px-6">
+        <div class="flex items-center space-x-3">
+            <span class="text-base">🔵</span>
+            <span class="font-mono font-bold tracking-wider text-sm">HEXA-B20 // CORE ENGINE DOCS</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="index.html" class="text-xs font-semibold text-[#5A554C] hover:text-black transition">← Return to Main Protocol</a>
+            <a href="https://x.com/hexa_b20" target="_blank" class="text-xs font-semibold text-[#5A554C] hover:text-black transition">Twitter</a>
+            <a href="https://github.com/Hexa-B20/HexaB20" target="_blank" class="bg-[#1A1A1A] text-[#F4EFE6] text-xs font-mono py-1.5 px-3 rounded-md hover:bg-[#333333] transition">GitHub Repo</a>
+        </div>
+    </header>
+
+    <!-- THREE-COLUMN DOCUMENTATION WRAPPER -->
+    <div class="pt-16 min-h-screen flex flex-col md:flex-row">
+        
+        <!-- COLUMN 1: LEFT NAVIGATION INDEX (Sticky) -->
+        <nav class="w-full md:w-64 border-r border-[#E6DFD3] bg-[#F1EDE4] p-6 md:sticky md:top-16 md:h-[calc(100vh-4rem)] overflow-y-auto shrink-0 text-left">
+            <div class="space-y-8">
+                <div>
+                    <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-[#8A8374] mb-3">01 // System Architecture</h5>
+                    <ul class="space-y-2.5 text-xs font-medium text-[#5A554C]">
+                        <li><a href="#overview" class="text-blue-600 block hover:text-blue-700 font-semibold">Protocol Overview</a></li>
+                        <li><a href="#state-machine" class="block hover:text-black transition">Autonomous State Machine</a></li>
+                        <li><a href="#context-retention" class="block hover:text-black transition">Context Retention Engine</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-[#8A8374] mb-3">02 // Base Onchain Layer</h5>
+                    <ul class="space-y-2.5 text-xs font-medium text-[#5A554C]">
+                        <li><a href="#rpc-config" class="block hover:text-black transition">RPC Configuration</a></li>
+                        <li><a href="#gas-optimization" class="block hover:text-black transition">Gas Optimization Metrics</a></li>
+                        <li><a href="#smart-accounts" class="block hover:text-black transition">Smart Account Guardrails</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-[#8A8374] mb-3">03 // Agent Schemas & Security</h5>
+                    <ul class="space-y-2.5 text-xs font-medium text-[#5A554C]">
+                        <li><a href="#json-payload" class="block hover:text-black transition">Structured Task Output</a></li>
+                        <li><a href="#sandbox-runtime" class="block hover:text-black transition">Isolated Sandbox Runtime</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- COLUMN 2 & 3 CONTAINER -->
+        <div class="flex-1 flex flex-col lg:flex-row">
+            
+            <!-- COLUMN 2: MIDDLE CONTENT AREA (Detailed Explanations) -->
+            <main class="flex-1 p-8 lg:p-12 space-y-16 max-w-3xl text-left">
+                
+                <!-- Section 1 -->
+                <section id="overview" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// BASE ARCHITECTURE</span>
+                    <h1 class="text-3xl font-extrabold text-[#1A1A1A] tracking-tight mt-1 mb-4">Protocol Overview</h1>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        The HEXA-B20 core architecture is optimized exclusively for multi-step contextual retention on the Base Layer-2 network[cite: 1]. Unlike isolated runtime agents that lose environment history between execution steps, HEXA-B20 continuously streams environment frames into a private loop, resolving complex natural language tasks into verifiable cryptographic state outcomes[cite: 1].
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        By deploying self-directed digital nodes onchain, the framework scales task processing natively without relying on constant centralized web management infrastructure[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 2 -->
+                <section id="state-machine" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// CRITICAL LOGIC</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Autonomous State Machine</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        The decision pipeline operates on an unassisted three-tier loop system: <code class="bg-[#E6DFD3] text-black px-1.5 py-0.5 rounded text-xs font-mono">Fetch</code>, <code class="bg-[#E6DFD3] text-black px-1.5 py-0.5 rounded text-xs font-mono">Reason</code>, and <code class="bg-[#E6DFD3] text-black px-1.5 py-0.5 rounded text-xs font-mono">Settle</code>[cite: 1]. During execution, intermediate telemetry is parsed locally inside sandboxed arrays, avoiding unnecessary mainnet network consensus overhead and latency[cite: 1].
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        This automated sequence evaluates execution paths recursively, confirming dependencies are completely mapped out before attempting state modifications or calling external APIs[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 3 -->
+                <section id="context-retention" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// MEMORY LAYERING</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Context Retention Engine</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        To maintain high workflow continuity without inflating computational costs, HEXA-B20 utilizes a sliding-window context system[cite: 1]. Important historical parameters, variables, and previous execution frames are cached using compressed key-value logs.
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        This prevents context drift or memory degradation when the agent handles prolonged asynchronous research cycles or cross-references multi-layered smart contract payloads[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 4 -->
+                <section id="rpc-config" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// LEDGER TUNING</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Base RPC Environment Variables</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        To synchronize distributed execution clusters, verify your node environment configurations utilize specific transaction bounds configured below[cite: 1].
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        Custom endpoints should point to reliable Base L2 infrastructure to minimize network response delay and handle high-throughput analytical query loops effectively[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 5 -->
+                <section id="gas-optimization" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// EFFICIENCY METRICS</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Gas Optimization Metrics</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        HEXA-B20 is designed to prevent unnecessary gas consumption by executing complex reasoning chains entirely offchain or within local sandboxes before grouping finalized transactions together[cite: 1].
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        By taking advantage of the Base Layer-2 architecture, average network transaction costs remain predictably stable under fractions of a cent, keeping the operation highly cost-efficient even during volatile network congestion spikes[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 6 -->
+                <section id="smart-accounts" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// ACCOUNT GUARDRAILS</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Smart Account Guardrails</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        Autonomous onchain processes are restricted by custom Smart Account parameters. The agent can only execute calls through programmatic routes that have been explicitly allowed, ensuring strict limits on capital exposure.
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        This programmatic architecture prevents unauthorized operations, keeping agent actions tightly aligned with its assigned workflow rules.
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 7 -->
+                <section id="json-payload" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// SCHEMAS</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Structured Task Output JSON</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        All autonomous calculations return typed data responses containing precise tracking indices, verification keys, and operational state parameters used during target consensus pipelines[cite: 1].
+                    </p>
+                </section>
+
+                <hr class="border-[#E6DFD3]">
+
+                <!-- Section 8 -->
+                <section id="sandbox-runtime" class="scroll-mt-24">
+                    <span class="font-mono text-xs text-blue-600 font-semibold tracking-wider uppercase">// RUNTIME SECURITY</span>
+                    <h2 class="text-xl font-bold text-[#1A1A1A] mb-3">Isolated Sandbox Runtime</h2>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed mb-4">
+                        Before publishing state updates or finalizing external network logs, the agent evaluates all generated operations inside an isolated container sandbox.
+                    </p>
+                    <p class="text-sm text-[#5A554C] font-light leading-relaxed">
+                        This sandbox environment checks script outputs, validates payload parameters against security rules, and mitigates execution risks prior to onchain settlement.
+                    </p>
+                </section>
+
+            </main>
+
+            <!-- COLUMN 3: RIGHT PANEL AREA (Dark Playground Code Blocks) -->
+            <section class="w-full lg:w-[420px] bg-[#1A1A1A] text-[#F4EFE6] p-6 lg:p-8 font-mono text-xs space-y-12 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] overflow-y-auto shrink-0 text-left">
+                
+                <!-- Code Box 1: Env Config -->
+                <div class="space-y-3">
+                    <p class="text-gray-500 font-semibold border-b border-gray-800 pb-2">// EXAMPLE ENVIRONMENT SCHEMA</p>
+                    <div class="bg-[#242424] p-4 rounded-lg text-[#DCD5C9] leading-relaxed shadow-inner">
+                        <p><span class="text-amber-400">NETWORK_TARGET</span>=<span class="text-emerald-400">"base-mainnet"</span></p>
+                        <p><span class="text-amber-400">MAX_GAS_LIMIT_ETH</span>=<span class="text-emerald-400">"0.00075"</span></p>
+                        <p><span class="text-amber-400">TELEMETRY_STREAM</span>=<span class="text-purple-400">true</span></p>
+                        <p><span class="text-amber-400">REASONING_DEPTH</span>=<span class="text-emerald-400">"chain_of_thought"</span></p>
+                    </div>
+                </div>
+
+                <!-- Code Box 2: Structured JSON Data (KEPT EXACTLY AS REQUESTED) -->
+                <div class="space-y-3">
+                    <p class="text-gray-500 font-semibold border-b border-gray-800 pb-2">// PARSED TASK PAYLOAD RESPONSE</p>
+                    <div class="bg-[#242424] p-4 rounded-lg text-gray-300 leading-relaxed overflow-x-auto shadow-inner">
+                        <p>{</p>
+                        <p class="pl-4">"agent_id": <span class="text-emerald-400">"HEXA-B20_NODE_1"</span>,</p>
+                        <p class="pl-4">"status": <span class="text-emerald-400">"settled"</span>,</p>
+                        <p class="pl-4">"gas_consumed_gwei": <span class="text-amber-400">12.4</span>,</p>
+                        <p class="pl-4">"proof_hash": <span class="text-emerald-400">"0x7bfa49d...c32"</span>,</p>
+                        <p class="pl-4">"milestones_passed": [</p>
+                        <p class="pl-8">"web_fetch",</p>
+                        <p class="pl-8">"context_verify",</p>
+                        <p class="pl-8">"l2_broadcast"</p>
+                        <p class="pl-4">]</p>
+                        <p>}</p>
+                    </div>
+                </div>
+
+                <!-- Code Box 3: Execution Call -->
+                <div class="space-y-3">
+                    <p class="text-gray-500 font-semibold border-b border-gray-800 pb-2">// LOGICAL POOL RECON</p>
+                    <div class="bg-[#242424] p-4 rounded-lg text-blue-300 leading-relaxed shadow-inner">
+                        <p class="text-gray-500">$ hexab20 --optimize-liquidity</p>
+                        <p class="text-emerald-400 mt-1">[i] Querying pool telemetry...</p>
+                        <p class="text-emerald-400">[i] Target locked: Pool 0x42f</p>
+                        <p class="text-purple-400">[✔] State Settled successfully.</p>
+                    </div>
+                </div>
+
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+</html>
